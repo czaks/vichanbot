@@ -1,0 +1,12 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    buftok (0.2.0)
+    net-irc2 (0.0.10)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  buftok
+  net-irc2
