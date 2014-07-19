@@ -66,7 +66,7 @@ class VichanBot < Net::IRC::Client
 
   def on_message(m)
     return false unless m.prefix and m.prefix.nick
-    @db[:seen, m.prefix.nick.downcase] = {cmd: m.command, parm: m.params}
+    @db[:seen, m.prefix.nick.downcase] = {cmd: m.command, parm: m.params, on: Time.now}
 
     if me = @db[:memo, m.prefix.nick.downcase]
       return false if me.length == 0
@@ -134,7 +134,7 @@ class VichanBot < Net::IRC::Client
 
       s = @db[:memo, who.downcase]
       s ||= []
-      s << "<#{@issuer}> #{memo}"
+      s << "[#{Time.now}] <#{@issuer}> #{memo}"
       @db[:memo, who.downcase] = s
 
       respond "Memo sent!"     
@@ -142,7 +142,7 @@ class VichanBot < Net::IRC::Client
 
     def seen whom
       if s=@db[:seen, whom.downcase]
-        respond "I have last seen #{whom} doing #{s[:cmd]} with #{s[:parm].join(", ")}"
+        respond "I have last seen #{whom} doing #{s[:cmd]} with #{s[:parm].join(", ")} on #{s[:on]}"
       end
     end
 
