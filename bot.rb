@@ -121,7 +121,8 @@ class VichanBot < Net::IRC::Client
       respond @methods.map { |i| "@#{i}" }.join(", ")
     end
 
-    def pick *a
+    def pick b,*a
+      a<<b
       respond a.shuffle.join(" > ")
     end
 
