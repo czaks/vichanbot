@@ -143,6 +143,8 @@ class VichanBot < Net::IRC::Client
     def seen whom
       if s=@db[:seen, whom.downcase]
         respond "I have last seen #{whom} doing #{s[:cmd]} with #{s[:parm].join(", ")} on #{s[:on]}"
+      else
+        respond "I haven't seen #{whom} ;__;"
       end
     end
 
