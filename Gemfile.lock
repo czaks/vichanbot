@@ -2,11 +2,11 @@ GEM
   remote: https://rubygems.org/
   specs:
     buftok (0.2.0)
-    net-irc2 (0.0.11)
+    net-irc2 (0.0.12)
+      buftok
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  buftok
   net-irc2
