@@ -61,7 +61,7 @@ class VichanBot < Net::IRC::Client
 
   def on_rpl_welcome(m)
     super
-    post JOIN, "#vichan"
+    post JOIN, "#vichan,#karachan,#karachan-meta,#vichan-devel,#radiocp"
   end
 
   def on_message(m)
