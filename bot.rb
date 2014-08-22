@@ -152,6 +152,24 @@ class VichanBot < Net::IRC::Client
     def f5
       post MODE, @chan, "-D+D"
     end
+
+  def papiez
+    przymiotniki = File.read("przymiotniki").split("\n")
+    respond "Papież #{przymiotniki.sample}"
+  end
+
+  def jan n
+    czasowniki = File.read('./czasowniki').split("\n")
+    rzeczowniki = File.read('./rzeczowniki').split("\n")
+    if n[n.length-1] == "ł" || n[n.length-1] == "l"
+       respond "Jan Paweł II #{n} małe #{rzeczowniki.sample}"
+    elsif n == nil || nil == " " || nil == ""
+        respond "Jan Paweł II #{czasowniki.sample} małe #{rzeczowniki.sample}"
+    else
+       respond "Jan Paweł II #{czasowniki.sample} małe #{n}"
+    end
+  end
+
   end
 
   include Ops
