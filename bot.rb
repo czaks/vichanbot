@@ -161,12 +161,12 @@ class VichanBot < Net::IRC::Client
     def jan n=nil
       czasowniki = File.read('data/czasowniki').split("\n")
       rzeczowniki = File.read('data/rzeczowniki').split("\n")
-      if n[n.length-1] == "ł" || n[n.length-1] == "l"
-         respond "Jan Paweł II #{n} małe #{rzeczowniki.sample}"
-      elsif n == nil
-          respond "Jan Paweł II #{czasowniki.sample} małe #{rzeczowniki.sample}"
+      if n == nil
+        respond "Jan Paweł II #{czasowniki.sample} małe #{rzeczowniki.sample}"
+      elsif n[n.length-1] == "ł" || n[n.length-1] == "l"
+        respond "Jan Paweł II #{n} małe #{rzeczowniki.sample}"
       else
-         respond "Jan Paweł II #{czasowniki.sample} małe #{n}"
+        respond "Jan Paweł II #{czasowniki.sample} małe #{n}"
       end
     end
 
